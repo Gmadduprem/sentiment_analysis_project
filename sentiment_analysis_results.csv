@@ -1,0 +1,21 @@
+Id,ProductId,UserId,ProfileName,HelpfulnessNumerator,HelpfulnessDenominator,Score,Time,Summary,Text,CleanText,neg,neu,pos,compound,Sentiment
+1,B001,U001,User1,1,1,5,0,Good quality product,The product is excellent and works very well. I am very happy with this purchase.,product excellent work well happy purchase,0.0,0.24,0.76,0.8591,Positive
+2,B002,U002,User2,0,0,1,0,Not recommended,The product was disappointing and poor quality. I would not buy it again.,product disappointing poor quality would not buy,0.558,0.442,0.0,-0.743,Negative
+3,B003,U003,User3,1,1,4,0,Very good,Great product with good quality. The taste is wonderful and I enjoyed it.,great product good quality taste wonderful enjoyed,0.0,0.176,0.824,0.9325,Positive
+4,B004,U004,User4,2,3,2,0,Poor experience,The product arrived damaged and the quality was not good. Very disappointing.,product arrived damaged quality not good disappointing,0.445,0.335,0.22,-0.3975,Negative
+5,B005,U005,User5,0,0,5,0,Excellent value,Excellent product at a great price. The quality is amazing and I will purchase again.,excellent product great price quality amazing purchase,0.0,0.256,0.744,0.9118,Positive
+6,B006,U006,User6,1,2,4,0,Really tasty,This was delicious and fresh. I really liked the flavor and quality.,delicious fresh really liked flavor quality,0.0,0.248,0.752,0.8439,Positive
+7,B007,U007,User7,0,0,1,0,Terrible product,Terrible experience. The product tasted bad and I was unhappy with the purchase.,terrible experience product tasted bad unhappy purchase,0.701,0.299,0.0,-0.8555,Negative
+8,B008,U008,User8,1,1,3,0,Average,"The product is okay. Nothing special, but it is acceptable for the price.",product okay nothing special acceptable price,0.463,0.329,0.208,-0.3226,Negative
+9,B009,U009,User9,1,1,5,0,Highly recommended,"I love this product. It is fantastic, delicious, and better than expected.",love product fantastic delicious better expected,0.0,0.122,0.878,0.9371,Positive
+10,B010,U010,User10,0,0,2,0,Could be better,The quality is average and the product was not as good as I expected.,quality average product not good expected,0.325,0.675,0.0,-0.3412,Negative
+11,B011,U011,User11,2,2,5,0,Great purchase,Very happy with this purchase. Great quality and excellent customer experience.,happy purchase great quality excellent customer experience,0.0,0.258,0.742,0.91,Positive
+12,B012,U012,User12,0,0,1,0,Waste of money,"I disliked this product. It was poor, disappointing, and a waste of money.",disliked product poor disappointing waste money,0.855,0.145,0.0,-0.8957,Negative
+13,B013,U013,User13,1,1,4,0,Nice product,Nice quality and good taste. I am satisfied and would recommend it.,nice quality good taste satisfied would recommend,0.0,0.214,0.786,0.875,Positive
+14,B014,U014,User14,0,0,2,0,Disappointed,I was disappointed. The product was not fresh and the quality was poor.,disappointed product not fresh quality poor,0.477,0.283,0.241,-0.3628,Negative
+15,B015,U015,User15,1,1,5,0,Fantastic,"Fantastic product. Wonderful taste, excellent quality, and very satisfying.",fantastic product wonderful taste excellent quality satisfying,0.0,0.176,0.824,0.9325,Positive
+16,B016,U016,User16,0,0,3,0,Just okay,"The product is just okay. It is usable, but the quality could be better.",product okay usable quality could better,0.0,0.455,0.545,0.5859,Positive
+17,B017,U017,User17,1,1,4,0,Worth buying,Good product and good value. I am pleased with the purchase.,good product good value pleased purchase,0.0,0.153,0.847,0.8779,Positive
+18,B018,U018,User18,0,0,1,0,Very bad,Very bad quality. The taste was awful and the overall experience was terrible.,bad quality taste awful overall experience terrible,0.706,0.294,0.0,-0.8625,Negative
+19,B019,U019,User19,1,1,5,0,Perfect,Perfect product. I absolutely love it and will definitely buy it again.,perfect product absolutely love definitely buy,0.0,0.212,0.788,0.9036,Positive
+20,B020,U020,User20,0,0,2,0,Not satisfied,I am not satisfied with the quality. It was disappointing and below expectations.,not satisfied quality disappointing expectation,0.293,0.377,0.33,0.0762,Positive

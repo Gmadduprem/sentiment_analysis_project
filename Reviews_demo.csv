@@ -1,0 +1,21 @@
+Id,ProductId,UserId,ProfileName,HelpfulnessNumerator,HelpfulnessDenominator,Score,Time,Summary,Text
+1,B001,U001,User1,1,1,5,0,Good quality product,The product is excellent and works very well. I am very happy with this purchase.
+2,B002,U002,User2,0,0,1,0,Not recommended,The product was disappointing and poor quality. I would not buy it again.
+3,B003,U003,User3,1,1,4,0,Very good,Great product with good quality. The taste is wonderful and I enjoyed it.
+4,B004,U004,User4,2,3,2,0,Poor experience,The product arrived damaged and the quality was not good. Very disappointing.
+5,B005,U005,User5,0,0,5,0,Excellent value,Excellent product at a great price. The quality is amazing and I will purchase again.
+6,B006,U006,User6,1,2,4,0,Really tasty,This was delicious and fresh. I really liked the flavor and quality.
+7,B007,U007,User7,0,0,1,0,Terrible product,Terrible experience. The product tasted bad and I was unhappy with the purchase.
+8,B008,U008,User8,1,1,3,0,Average,"The product is okay. Nothing special, but it is acceptable for the price."
+9,B009,U009,User9,1,1,5,0,Highly recommended,"I love this product. It is fantastic, delicious, and better than expected."
+10,B010,U010,User10,0,0,2,0,Could be better,The quality is average and the product was not as good as I expected.
+11,B011,U011,User11,2,2,5,0,Great purchase,Very happy with this purchase. Great quality and excellent customer experience.
+12,B012,U012,User12,0,0,1,0,Waste of money,"I disliked this product. It was poor, disappointing, and a waste of money."
+13,B013,U013,User13,1,1,4,0,Nice product,Nice quality and good taste. I am satisfied and would recommend it.
+14,B014,U014,User14,0,0,2,0,Disappointed,I was disappointed. The product was not fresh and the quality was poor.
+15,B015,U015,User15,1,1,5,0,Fantastic,"Fantastic product. Wonderful taste, excellent quality, and very satisfying."
+16,B016,U016,User16,0,0,3,0,Just okay,"The product is just okay. It is usable, but the quality could be better."
+17,B017,U017,User17,1,1,4,0,Worth buying,Good product and good value. I am pleased with the purchase.
+18,B018,U018,User18,0,0,1,0,Very bad,Very bad quality. The taste was awful and the overall experience was terrible.
+19,B019,U019,User19,1,1,5,0,Perfect,Perfect product. I absolutely love it and will definitely buy it again.
+20,B020,U020,User20,0,0,2,0,Not satisfied,I am not satisfied with the quality. It was disappointing and below expectations.
