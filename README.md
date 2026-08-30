@@ -215,11 +215,13 @@ Important negation words are preserved because they can affect sentiment.
 
 The project preserves:
 
+```text
 not
 no
 never
 neither
 nor
+```
 
 **6. Lemmatization**
 
@@ -233,10 +235,12 @@ The project uses VADER Sentiment Analysis to calculate sentiment scores.
 
 **VADER generates:**
 
+```text
 negative score
 neutral score
 positive score
 compound score
+```
 
 The compound score is used to determine the final sentiment category.
 
@@ -252,7 +256,10 @@ Between -0.05 and 0.05	Neutral
 
 The project analyzed:
 
+```text
 Total Reviews: 20
+```
+
 Review Score Distribution
 Review Score	Number of Reviews
 1	4
@@ -262,11 +269,15 @@ Review Score	Number of Reviews
 5	6
 Total	20
 Average Review Rating
+```text
 3.20 / 5
+```
 
 The most common review rating in the dataset is:
 
+```text
 5 stars
+```
 
 with 6 reviews.
 
@@ -281,8 +292,12 @@ Positive	12	60%
 Negative	8	40%
 Neutral	0	0%
 Total	20	100%
+
 Average Compound Sentiment Score
+
+```text
 0.2432
+```
 
 The dataset contains more positive reviews than negative reviews.
 
@@ -343,22 +358,30 @@ The word cloud provides a visual representation of frequently used vocabulary in
 The project generates four main visualization files.
 
 1. Review Score Distribution
+```text
 score_distribution.png
+```
 
 Displays the number of reviews associated with each review score from 1 to 5.
 
 2. Sentiment Distribution
+```text
 sentiment_distribution.png
+```
 
 Displays the number of Positive, Negative, and Neutral reviews.
 
 3. Review Score vs Sentiment
+```text
 score_vs_sentiment.png
+```
 
 Shows the relationship between numerical review scores and sentiment classifications.
 
 4. Review Summary Word Cloud
+```text
 summary_wordcloud.png
+```
 
 Displays frequently occurring words from review summaries.
 
@@ -366,7 +389,7 @@ Displays frequently occurring words from review summaries.
 
 ## 📁 Project Structure
 
-
+```text
 review-sentiment-analysis/
 │
 ├── sentiment_analysis.py
@@ -381,6 +404,7 @@ review-sentiment-analysis/
 ├── summary_wordcloud.png
 │
 └── README.md
+```
 
 ---
 
@@ -392,11 +416,15 @@ Make sure Python 3.x is installed on your system.
 
 Check the Python version:
 
+```text
 python --version
+```
 
 or:
 
+```text
 python3 --version
+```
 
 ---
 
@@ -404,29 +432,38 @@ python3 --version
 
 Clone the repository:
 
+```text
 git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+```
 
 Navigate to the project directory:
 
+```text
 cd YOUR-REPOSITORY
+```
 
 Install the required Python packages:
 
+```text
 pip install -r requirements.txt
-
+```
 ---
 
 ## ▶️ How to Run
 
 Make sure the following files are available in the project directory:
 
+```text
 sentiment_analysis.py
 Reviews_demo.csv
 requirements.txt
+```
 
 Run the Python script:
 
+```text
 python sentiment_analysis.py
+```
 
 The program will:
 
@@ -447,21 +484,25 @@ Save the final analysis results.
 
 After successful execution, the following files are generated:
 
+```text
 sentiment_analysis_results.csv
 score_distribution.png
 sentiment_distribution.png
 score_vs_sentiment.png
 summary_wordcloud.png
 Sentiment Analysis Output
+```
 
 The generated CSV contains the original dataset information together with additional analytical fields such as:
 
+```text
 CleanText
 neg
 neu
 pos
 compound
 Sentiment
+```
 
 --- 
 
@@ -546,7 +587,7 @@ Exception Handling
 
 ## 🔑 Keywords
 
-
+```text
 Python
 Natural Language Processing
 NLP
@@ -570,3 +611,4 @@ Seaborn
 WordCloud
 Opinion Mining
 Customer Feedback
+```
