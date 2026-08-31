@@ -13,7 +13,6 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 # FILE SETTINGS 
 
-
 DATA_FILE = "Reviews_demo.csv"
 
 OUTPUT_FILE = "sentiment_analysis_results.csv"
@@ -24,7 +23,7 @@ WORDCLOUD_FILE = "summary_wordcloud.png"
 SCORE_SENTIMENT_CHART = "score_vs_sentiment.png"
 
 
-# Here,  downloading 'REQUIRED NLTK DATA'
+# Here,  w are downloading 'REQUIRED NLTK DATA'
 
 print("Downloading/checking NLTK resources...")
 
@@ -43,9 +42,7 @@ def preprocess_text(text, stop_words):
 
     text = text.lower()
 
-
     text = re.sub(r"[^\w\s]", "", text)
-
 
     words = text.split()
 
@@ -66,16 +63,12 @@ def preprocess_text(text, stop_words):
     return " ".join(words)
 
 
-
-
 def main():
 
     print("\n========================================")
     print("   REVIEW SENTIMENT ANALYSIS")
     print("========================================\n")
 
-
-    
 
     print("Loading dataset...")
 
@@ -97,9 +90,7 @@ def main():
     required_columns = ["Text", "Score"]
 
     for column in required_columns:
-
         if column not in df.columns:
-
             print(
                 f"\nERROR: Required column '{column}' "
                 f"is missing from the dataset."
@@ -107,7 +98,6 @@ def main():
 
             print("\nAvailable columns:")
             print(df.columns.tolist())
-
             return
 
 
@@ -118,74 +108,36 @@ def main():
     print(df.shape)
 
 
-  
-
     print("\n========================================")
     print("REVIEW SCORE DISTRIBUTION")
     print("========================================")
 
-    score_counts = (
-        df["Score"]
-        .value_counts()
-        .sort_index()
-    )
+    score_counts = (df["Score"].value_counts().sort_index())
 
     print(score_counts)
 
-
-
     plt.figure(figsize=(8, 5))
-
-    sns.countplot(
-        data=df,
-        x="Score"
-    )
-
+    sns.countplot(data=df,x="Score")
     plt.title("Distribution of Review Scores")
-
     plt.xlabel("Review Score")
-
     plt.ylabel("Number of Reviews")
-
     plt.tight_layout()
-
-    plt.savefig(
-        SCORE_CHART,
-        dpi=300
-    )
-
+    plt.savefig(SCORE_CHART,dpi=300)
     plt.show()
 
     
 
-    stop_words = set(
-        stopwords.words("english")
-    )
+    stop_words = set(stopwords.words("english"))
 
-
-    
-
-    negation_words = {
-        "not",
-        "no",
-        "never",
-        "neither",
-        "nor"
-    }
+    negation_words = {"not","no","never","neither","nor"}
 
     stop_words = stop_words - negation_words
 
-
-    
     print("\nCleaning review text...")
 
     df["CleanText"] = df["Text"].apply(
         lambda text:
-        preprocess_text(
-            text,
-            stop_words
-        )
-    )
+        preprocess_text(text,stop_words))
 
     print("Text cleaning completed.")
 
@@ -207,101 +159,44 @@ def main():
 
     if "Summary" in df.columns:
 
-        summary_text = (
-            df["Summary"]
-            .dropna()
-            .astype(str)
-            .str.cat(sep=" ")
-        )
+        summary_text = (df["Summary"].dropna().astype(str).str.cat(sep=" "))
 
         if summary_text.strip():
 
             print("\nCreating word cloud...")
-
-            wordcloud = WordCloud(
-                width=1200,
-                height=700,
-                background_color="white"
-            ).generate(summary_text)
-
-            plt.figure(
-                figsize=(12, 7)
-            )
-
-            plt.imshow(
-                wordcloud,
-                interpolation="bilinear"
-            )
-
+            wordcloud = WordCloud(width=1200,height=700,background_color="white").generate(summary_text)
+            plt.figure(figsize=(12, 7))
+            plt.imshow(wordcloud,interpolation="bilinear")
             plt.axis("off")
-
-            plt.title(
-                "Review Summary Word Cloud"
-            )
-
+            plt.title("Review Summary Word Cloud")
             plt.tight_layout()
-
-            plt.savefig(
-                WORDCLOUD_FILE,
-                dpi=300
-            )
-
+            plt.savefig(WORDCLOUD_FILE,dpi=300)
             plt.show()
 
-    print("\nRunning VADER sentiment analysis...")
+    print("\nRunning VADER sentiment analysis")
 
     analyzer = SentimentIntensityAnalyzer()
 
 
-    scores = df["CleanText"].apply(
-        analyzer.polarity_scores
-    )
+    scores = df["CleanText"].apply(analyzer.polarity_scores)
 
-    sentiment_scores = pd.DataFrame(
-        scores.tolist(),
-        index=df.index
-    )
+    sentiment_scores = pd.DataFrame(scores.tolist(),index=df.index)
 
 
-    df = pd.concat(
-        [
-            df,
-            sentiment_scores
-        ],
-        axis=1
-    )
+    df = pd.concat([df,sentiment_scores],axis=1)
 
 
-    df["Sentiment"] = np.where(
-        df["compound"] >= 0.05,
-        "Positive",
-        np.where(
-            df["compound"] <= -0.05,
-            "Negative",
-            "Neutral"
-        )
-    )
+    df["Sentiment"] = np.where(df["compound"] >= 0.05,"Positive",np.where(df["compound"] <= -0.05,"Negative","Neutral"))
 
 
     print("\n========================================")
     print("SENTIMENT RESULTS")
     print("========================================")
 
-    print(
-        df[
-            [
-                "Score",
-                "compound",
-                "Sentiment"
-            ]
-        ].to_string(index=False)
-    )
+    print(df[["Score","compound","Sentiment"]].to_string(index=False))
 
 
-    sentiment_counts = (
-        df["Sentiment"]
-        .value_counts()
-    )
+    sentiment_counts = (df["Sentiment"].value_counts())
 
     print("\n========================================")
     print("SENTIMENT COUNTS")
@@ -311,13 +206,7 @@ def main():
 
 
 
-    sentiment_percentages = (
-        df["Sentiment"]
-        .value_counts(
-            normalize=True
-        )
-        * 100
-    )
+    sentiment_percentages = (df["Sentiment"].value_counts(normalize=True)* 100)
 
     print("\n========================================")
     print("SENTIMENT PERCENTAGES")
@@ -331,78 +220,31 @@ def main():
         )
 
 
-  
-
     plt.figure(figsize=(8, 5))
-
-    sentiment_counts.plot(
-        kind="bar",
-        rot=0
-    )
-
-    plt.title(
-        "Sentiment Distribution"
-    )
-
-    plt.xlabel(
-        "Sentiment"
-    )
-
-    plt.ylabel(
-        "Number of Reviews"
-    )
-
+    sentiment_counts.plot(kind="bar",rot=0)
+    plt.title("Sentiment Distribution")
+    plt.xlabel("Sentiment")
+    plt.ylabel("Number of Reviews")
     plt.tight_layout()
-
-    plt.savefig(
-        SENTIMENT_CHART,
-        dpi=300
-    )
-
+    plt.savefig(SENTIMENT_CHART,dpi=300)
     plt.show()
-
-
-    
 
     print("\nCreating score vs sentiment chart...")
 
     plt.figure(figsize=(10, 6))
-
-    sns.countplot(
-        data=df,
-        x="Score",
-        hue="Sentiment"
-    )
-
-    plt.title(
-        "Review Score vs Sentiment"
-    )
-
-    plt.xlabel(
-        "Review Score"
-    )
-
-    plt.ylabel(
-        "Number of Reviews"
-    )
-
+    sns.countplot(data=df,x="Score",hue="Sentiment")
+    plt.title("Review Score vs Sentiment")
+    plt.xlabel("Review Score")
+    plt.ylabel("Number of Reviews")
     plt.tight_layout()
-
-    plt.savefig(
-        SCORE_SENTIMENT_CHART,
-        dpi=300
-    )
-
+    plt.savefig(SCORE_SENTIMENT_CHART,dpi=300)
     plt.show()
 
 
 
-    print("\nSaving results...")
+    print("\nSaving results")
 
-    df.to_csv(
-        OUTPUT_FILE,
-        index=False
-    )
+    df.to_csv(OUTPUT_FILE,index=False)
 
     print(
         f"Results saved to: "
@@ -416,24 +258,13 @@ def main():
     print("FINAL ANALYSIS")
     print("========================================")
 
-    print(
-        f"Total reviews: {len(df)}"
-    )
+    print(f"Total reviews: {len(df)}")
 
-    print(
-        f"Positive reviews: "
-        f"{(df['Sentiment'] == 'Positive').sum()}"
-    )
+    print(f"Positive reviews: "f"{(df['Sentiment'] == 'Positive').sum()}")
 
-    print(
-        f"Neutral reviews: "
-        f"{(df['Sentiment'] == 'Neutral').sum()}"
-    )
+    print(f"Neutral reviews: "f"{(df['Sentiment'] == 'Neutral').sum()}")
 
-    print(
-        f"Negative reviews: "
-        f"{(df['Sentiment'] == 'Negative').sum()}"
-    )
+    print(f"Negative reviews: "f"{(df['Sentiment'] == 'Negative').sum()}")
 
 
 
