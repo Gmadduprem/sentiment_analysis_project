@@ -37,30 +37,18 @@ print("NLTK resources ready.")
 # Here, TEXT PREPROCESSING FUNCTION
 
 def preprocess_text(text, stop_words):
-
     text = str(text)
-
     text = text.lower()
-
     text = re.sub(r"[^\w\s]", "", text)
-
     words = text.split()
 
+    words = [word for word in words if word not in stop_words]
 
-    words = [
-        word
-        for word in words
-        if word not in stop_words
-    ]
-
-    # Lemmatize words
-    words = [
-        Word(word).lemmatize()
-        for word in words
-    ]
-
+    # Lemmatize words Process start here
+    words = [Word(word).lemmatize() for word in words]
 
     return " ".join(words)
+
 
 
 def main():
@@ -100,10 +88,7 @@ def main():
             print(df.columns.tolist())
             return
 
-
-
     df = df.dropna(subset=["Text"]).copy()
-
     print("\nDataset after removing empty reviews:")
     print(df.shape)
 
@@ -126,19 +111,11 @@ def main():
     plt.show()
 
     
-
     stop_words = set(stopwords.words("english"))
-
     negation_words = {"not","no","never","neither","nor"}
-
     stop_words = stop_words - negation_words
-
     print("\nCleaning review text...")
-
-    df["CleanText"] = df["Text"].apply(
-        lambda text:
-        preprocess_text(text,stop_words))
-
+    df["CleanText"] = df["Text"].apply(lambda text:preprocess_text(text,stop_words))
     print("Text cleaning completed.")
 
 
@@ -179,13 +156,10 @@ def main():
 
 
     scores = df["CleanText"].apply(analyzer.polarity_scores)
-
     sentiment_scores = pd.DataFrame(scores.tolist(),index=df.index)
 
 
     df = pd.concat([df,sentiment_scores],axis=1)
-
-
     df["Sentiment"] = np.where(df["compound"] >= 0.05,"Positive",np.where(df["compound"] <= -0.05,"Negative","Neutral"))
 
 
@@ -204,8 +178,6 @@ def main():
 
     print(sentiment_counts)
 
-
-
     sentiment_percentages = (df["Sentiment"].value_counts(normalize=True)* 100)
 
     print("\n========================================")
@@ -214,10 +186,7 @@ def main():
 
     for sentiment, percentage in sentiment_percentages.items():
 
-        print(
-            f"{sentiment}: "
-            f"{percentage:.2f}%"
-        )
+        print(f"{sentiment}: {percentage:.2f}%")
 
 
     plt.figure(figsize=(8, 5))
@@ -241,15 +210,11 @@ def main():
     plt.show()
 
 
-
     print("\nSaving results")
 
     df.to_csv(OUTPUT_FILE,index=False)
 
-    print(
-        f"Results saved to: "
-        f"{OUTPUT_FILE}"
-    )
+    print(f"Results saved to: {OUTPUT_FILE}")
 
 
 
@@ -259,26 +224,15 @@ def main():
     print("========================================")
 
     print(f"Total reviews: {len(df)}")
-
     print(f"Positive reviews: "f"{(df['Sentiment'] == 'Positive').sum()}")
-
     print(f"Neutral reviews: "f"{(df['Sentiment'] == 'Neutral').sum()}")
-
     print(f"Negative reviews: "f"{(df['Sentiment'] == 'Negative').sum()}")
 
 
 
-    print(
-        f"\nAverage compound sentiment score: "
-        f"{df['compound'].mean():.4f}"
-    )
+    print(f"\nAverage compound sentiment score: {df['compound'].mean():.4f}")
 
-
-    print(
-        f"Average review rating: "
-        f"{df['Score'].mean():.2f}"
-    )
-
+    print(f"Average review rating: {df['Score'].mean():.2f}")
 
     print("\n========================================")
     print("ANALYSIS COMPLETED SUCCESSFULLY")
