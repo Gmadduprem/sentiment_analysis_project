@@ -21,7 +21,7 @@ The system classifies reviews into three possible sentiment categories:
 - Negative
 - Neutral
 
-The project uses **VADER (Valence Aware Dictionary and sEntiment Reasoner)** for sentiment analysis and generates multiple visualizations to understand review ratings, sentiment distribution, and the relationship between numerical ratings and textual sentiment.
+The project uses **VADER (Valence Aware Dictionary and Sentiment Reasoner)** for sentiment analysis and generates multiple visualizations to understand review ratings, sentiment distribution, and the relationship between numerical ratings and textual sentiment.
 
 ---
 
